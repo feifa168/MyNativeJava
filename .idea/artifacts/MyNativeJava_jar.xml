@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact name="MyNativeJava:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MyNativeJava_jar</output-path>
+    <root id="root">
+      <element id="archive" name="MyNativeJava.jar">
+        <element id="module-output" name="MyNativeJava" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/libMyNativeJava.dll" />
+    </root>
+  </artifact>
+</component>
