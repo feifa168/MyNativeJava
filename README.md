@@ -11,8 +11,9 @@
 * java: IDEA 2018.1 + jdk1.8
 * c++ : CLion 2018.2 + mingw-w64
 * 依赖库及文件
-    * **jvm.lib** %JAVA_HOME%\lib
-    * **jni.h jni_md.h** %JAVA_HOME%\include;%JAVA_HOME%\include\win32;
+    * **%JAVA_HOME%\lib\jvm.lib**
+    * **%JAVA_HOME%\include\jni.h**
+     * **%JAVA_HOME%\include\win32\jni_md.h**
     
 ## 模块
 * jni概述
@@ -23,20 +24,24 @@
 ### jni概述
 >待补充
 
+>参考
+* [JNI学习笔记](http://jellypaul.github.io/java/2016/08/08/JNI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html)
+* [Java Programming Tutorial Java Native Interface](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html)
+
 ### native接口文件
 >include目录下javah生成的接口文件，使用如下命令
 * 方法1
     * javac -h include com\ft\mynative\MyNativeJava.java
 * 方法2
-    * javac com\ft\mynative\MyNativeJava.java 详情参见[MyNativeJava.java](https://github.com/feifa168/MyNativeJava/src/main/java/com/ft/mynative/MyNativeJava.java)
+    * javac com\ft\mynative\MyNativeJava.java 详情参见[MyNativeJava.java](https://github.com/feifa168/MyNativeJava/blob/master/src/main/java/com/ft/mynative/MyNativeJava.java)
     * javah MyNativeJava
-详情参见 [com_ft_mynative_MyNativeJava.h](https://github.com/feifa168/MyNativeJava/src/main/java/include/com_ft_mynative_MyNativeJava.h)提供测试函数
+详情参见 [com_ft_mynative_MyNativeJava.h](https://github.com/feifa168/MyNativeJava/blob/master/src/main/java/include/com_ft_mynative_MyNativeJava.h)提供测试函数
 
 
 ### 动态库提供本地方法
 >CLion生成动态库，jdk是64位，原本使用的Mingw是32位程序，生成的dll在64位java程序中不能使用，
 又下载了mingw64，配置使CLion使用64位mingw，CLion使用CMake编译程序。
-动态库部分请参见[本地方法库](https://github.com/feifa168/MyNativeCpp/README.md)
+动态库部分请参见[本地方法库](https://github.com/feifa168/MyNativeCpp/blob/master/README.md)
 
 ### java使用本地方法
 >静态块加载dll
@@ -48,7 +53,7 @@ public class MyNativeJava {
 }
 ```
 >加载成功就可以使用native方法了，fun，fun2，fun3是测试用的几个方法，后续会加入更多内容，比如类成员修改，类方法执行等。
-详情参见[MyNativeJava.java](https://github.com/feifa168/MyNativeJava/src/main/java/com/ft/mynative/MyNativeJava.java)
+详情参见[MyNativeJava.java](https://github.com/feifa168/MyNativeJava/blob/master/src/main/java/com/ft/mynative/MyNativeJava.java)
 ```java
 public class MyNativeJava {
     static {
