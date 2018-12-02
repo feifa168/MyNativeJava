@@ -6,12 +6,12 @@ public class MyNativeJava {
     }
 
     private int num = 5;
-    private char[] ca = {5, 3};
+    private char[] ca = new char[]{'a', 'b'};
     private String str = "tom";
     private String[] strA = {"one", "two"};
 
     private static int snum = 5;
-    private static char[] sca = {5, 3};
+    private static char[] sca = new char[]{'a', 'b'};
     private static String sstr = "bruce";
     private static String[] sstrA = {"Monday", "Tuesty"};
 
@@ -48,24 +48,39 @@ public class MyNativeJava {
 //        System.out.println(nativeJava.fun2("hello, tom"));
 //        nativeJava.fun3(new Integer[]{3, 5});
 
+        // test int, short, byte, long, float, double, char
         nativeJava.baseTypes(4, 'a', true, (short)8, 100, 1.5f, 2.79, (byte)57);
-        new Integer(5).intValue();
-        new Boolean(false).booleanValue();
-        new Short((short)4).shortValue();
-        new Long((long)6).longValue();
-        new Character('a').charValue();
-        new Float(5.0f).floatValue();
-        new Double(5.9).doubleValue();
-        new Byte((byte)5).byteValue();
-        Boolean.valueOf(false);
+
+        // test Integer, Short, Long, Float, Double, Byte, Boolean, Character
         Boolean b = nativeJava.wrapBaseTypes(Integer.valueOf(5), Character.valueOf('a'), Boolean.valueOf(true),
                 Short.valueOf((short)6), Long.valueOf((long)800), Float.valueOf(1.2f), Double.valueOf(3.4), Byte.valueOf((byte)'a'));
         System.out.println(b);
 
+        // test int[]
         int ia[] = {1, 2, 3, 4, 5, 6};
         boolean[] ba = nativeJava.intArray(ia);
         for (int i=0; i<ba.length; i++) {
             System.out.println("num is " + ia[i] + ", &1=" + ba[i]);
         }
+
+        // test Integer[]
+        Integer[] integerA  = {1, 2, 3, 4, 5, 6};
+        Boolean[] boolA     = nativeJava.wrapIntArray(integerA);
+        for (int i=0; i<boolA.length; i++) {
+            System.out.println("num is " + integerA[i] + ", &1=" + boolA[i]);
+        }
+
+        // test String
+        String retStr = nativeJava.stringTest("string in java");
+        System.out.println(retStr);
+
+        // test String[]
+        String[] strs = nativeJava.strArrTest(new String[]{"one", "two", "three"});
+        for (int i=0; i<strs.length; i++) {
+            System.out.println("string is " + strs[i]);
+        }
+
+        // test field
+        nativeJava.modifyFields();
     }
 }
