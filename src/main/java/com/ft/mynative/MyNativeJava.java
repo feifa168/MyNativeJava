@@ -1,5 +1,7 @@
 package com.ft.mynative;
 
+import org.junit.Test;
+
 public class MyNativeJava {
     static {
         System.loadLibrary("libMyNativeJava");
@@ -15,6 +17,10 @@ public class MyNativeJava {
     private static String sstr = "bruce";
     private static String[] sstrA = {"Monday", "Tuesty"};
 
+    @Test
+    public void test1243() {
+        this.testInt(5);
+    }
     private void testInt(int a) {
         System.out.println("testInt(int " + a + ")");
     }
@@ -82,5 +88,8 @@ public class MyNativeJava {
 
         // test field
         nativeJava.modifyFields();
+
+        // test method
+        nativeJava.testMethod();
     }
 }
